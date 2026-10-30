@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ko-KR' }}">
+    <head>
+        {% include head.html %}
+        <link rel="stylesheet" href="{{ '/assets/css/404.css' | prepend: site.baseurl }}">
+    </head>
+    <body>
+        <main class="blank-page">
+            <a href="{{ '/' | prepend: site.baseurl }}" class="go-home">← 홈으로</a>
+            <div class="not-found-msg">
+                <span class="stars" aria-hidden="true">✦　·　✧</span>
+                <h1>404</h1>
+                <p>요청한 페이지를 찾을 수 없습니다.</p>
+            </div>
+        </main>
+    </body>
+</html>

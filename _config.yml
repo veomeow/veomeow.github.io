@@ -1,0 +1,58 @@
+title: Muff1n
+description: "흥미 있는 거 다 해보기"
+url: "https://vemeow.github.io"
+baseurl: ""
+lang: ko-KR
+timezone: Asia/Seoul
+repository: vemeow/vemeow.github.io
+logo_img: "/assets/img/vemeow-avatar.jpg"
+profile_img: "/assets/img/vemeow-avatar.jpg"
+
+# Social Links
+github_username: vemeow
+github_profile_url: "https://github.com/veomeow"
+
+# External services are opt-in. Add the required identifiers only after configuring
+# the service for vemeow/vemeow.github.io.
+giscus_repo:
+giscus_repoId:
+giscus_category:
+giscus_categoryId:
+goatcounter_code:
+google_analytics:
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+exclude:
+  - docs/
+  - README.md
+  - LICENSE
+  - jekyll-theme-satellite.gemspec
+  - vendor/
+  - scripts/
+  - .github/
+  - Gemfile
+  - Gemfile.lock
+
+collections:
+  pages:
+    output: true
+    permalink: /:path.html
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      date: "1900-01-01"
+
+# Markdown newline activator 
+kramdown:
+  input: GFM
+  hard_wrap: true

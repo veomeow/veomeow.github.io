@@ -1,0 +1,54 @@
+---
+---
+
+body {
+  margin:0;
+  color:#24252A;
+  font-family:Pretendard, "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  background:
+    repeating-linear-gradient(
+    to right, transparent, 
+    transparent 100px, 
+    white 100px, 
+    white 112px
+    ),
+    repeating-linear-gradient(
+    to bottom, transparent, 
+    transparent 100px, 
+    white 100px, 
+    white 112px
+    ),
+    linear-gradient(45deg, #E9F0EA, #F0ECF7);
+}
+
+.blank-page {
+  box-sizing:border-box;
+  min-height:100vh;
+  padding:clamp(2rem, 8vw, 6rem);
+  background:rgba(255,255,255,.94);
+
+  .go-home {
+    text-decoration:none;
+    color:#47694F;
+    font-size:1.25rem;
+  }
+
+  .not-found-msg {
+    margin-top:20vh;
+    text-align:center;
+
+    .stars { color:#695596; }
+
+    p { color:#555B63; font-size:1.15rem; }
+  }
+
+  h1 {
+    margin:1rem auto;
+    color:#47694F;
+    font-size:clamp(4rem, 15vw, 8rem);
+    line-height:1;
+    letter-spacing:-1px;
+  }
+}
+
+.container { display:none; }

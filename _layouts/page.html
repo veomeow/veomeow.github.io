@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ko-KR' }}">
+    {%- assign page_tree = page.path | remove_first: "_pages/" | split: "/" -%}
+    {%- assign page_level = page_tree.size -%}
+    {% if page_tree.last == "index.md" %}
+        {%- assign page_type = "category" -%}
+        {%- assign path_category_title = page.path | remove: 'index.md' | split: "/" | last -%}
+        {%- assign category_title = page.title | default: path_category_title -%}
+    {% else %}
+        {%- assign page_type = "post" -%}
+    {% endif %}
+    <head>
+        {% include head.html %}
+        <link rel="preload" href="{{ site.profile_img | prepend: site.baseurl }}" as="image">
+        <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
+        {% if page_type == "post" %}
+            {% if site.goatcounter_code %}
+                <script data-goatcounter="https://{{ site.goatcounter_code }}.goatcounter.com/count"
+                async src="//gc.zgo.at/count.js"></script>
+            {% endif %}
+
+            {% if site.giscus_repo and site.giscus_repoId and site.giscus_category and site.giscus_categoryId %}
+                <meta name="giscus_repo" content="{{ site.giscus_repo }}">
+                <meta name="giscus_repoId" content="{{ site.giscus_repoId }}">
+                <meta name="giscus_category" content="{{ site.giscus_category }}">
+                <meta name="giscus_categoryId" content="{{ site.giscus_categoryId }}">
+            {% endif %}
+
+            {% if page.thumbnail %}
+                <style>
+                    {%- assign check_localasset = page.thumbnail | split:'/' -%}
+                    {% if check_localasset[0] == '' %}
+                        .thumbnail {
+                            background-image: url("{{ page.thumbnail | prepend: site.baseurl }}");
+                        }
+                    {% else %}
+                        .thumbnail {
+                            background-image: url("{{ page.thumbnail }}");
+                        }
+                    {% endif %}
+                </style>
+            {% else %}
+                <style>
+                    .thumbnail {
+                        aspect-ratio: auto !important;
+                    }
+                    .transbox {
+                        transform: none;
+                        position: relative;
+                        margin: auto;
+                        left: 0;
+                        top: 0;
+                    }
+                </style>
+            {% endif %}
+        {% endif %}
+    </head>
+    <body{% if page_type == "category" and page_level == 1 %} class="home-page"{% endif %}>
+        <canvas id="stars" aria-hidden="true"></canvas>
+        {% include sidebar.html %}
+        <div id="post">
+            {% unless page_type == "category" and page_level == 1 %}
+            <div class="inner-header">
+                <span class="dot" style="background-color: #F86158;"></span>
+                <span class="dot" style="background-color: #FBBF2D;"></span>
+                <span class="dot" style="background-color: #2ACB45;"></span>
+            </div>
+            {% endunless %}
+            <div class="inner-content">
+                {% include category.html %}
+                {% if page_type == "category" %}
+                    {% include pagination.html %}
+                {% else %}
+                    {% include post.html %}
+                {% endif %}
+            </div>
+        </div>
+        {% include search.html %}
+        {% include footer.html %}
+        {% if page_type == "category" %}
+        <script src="{{ '/assets/js/subject.js' | prepend: site.baseurl }}"></script>
+        {% else %}
+        <script src="{{ '/assets/js/post.js' | prepend: site.baseurl }}"></script>
+        <link rel="preload" href="{{ '/assets/css/highlight.min.css' | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="{{ '/assets/css/highlight.min.css' | prepend: site.baseurl }}"></noscript>
+        <script defer src="{{ '/assets/js/highlight.min.js' | prepend: site.baseurl }}"></script>
+        {% endif %}
+        <script src="{{ '/assets/js/common.js' | prepend: site.baseurl }}"></script>
+        {% include search_event.html %}
+    </body>
+</html>
