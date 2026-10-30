@@ -1,6 +1,6 @@
 # Muff1n
 
-`https://vemeow.github.io`에 배포할 Jekyll 기술 블로그 소스입니다. Satellite 테마를 기반으로 밝은 우주 분위기, 6개 카테고리, 검색, TOC, 코드 복사 기능을 구성했습니다.
+`https://vemeow.github.io`에 배포할 Jekyll 기술 블로그 소스입니다. Satellite 테마를 기반으로 밝은 우주 분위기, 6개 카테고리, 검색, TOC, 코드 복사를 구성했습니다.
 
 ## 로컬 실행
 
