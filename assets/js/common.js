@@ -87,18 +87,26 @@ document.addEventListener('DOMContentLoaded', function(){
 
     const searchInput = document.getElementById('search-input');
     const searchPanel = document.getElementById('search');
-    document.querySelectorAll('.btn-search').forEach(function(button) {
-        button.addEventListener('click', function() {
-            if (window.matchMedia('(max-width: 1024px)').matches) searchPanel.classList.toggle('search-open');
-            if (!searchPanel.classList.contains('search-open') && window.matchMedia('(max-width: 1024px)').matches) return;
-            searchInput.scrollIntoView({ block: 'center', behavior: 'smooth' });
-            searchInput.focus({ preventScroll: true });
-        });
+    const searchButton = document.querySelector('.sidebar-right .btn-search');
+    function setSearchOpen(open) {
+        searchPanel.classList.toggle('search-open', open);
+        searchButton.setAttribute('aria-expanded', String(open));
+        searchButton.setAttribute('aria-label', open ? '검색 닫기' : '검색 열기');
+        if (open) searchInput.focus();
+    }
+    window.openSearchPanel = function() { setSearchOpen(true); };
+    searchButton.addEventListener('click', function() {
+        setSearchOpen(!searchPanel.classList.contains('search-open'));
+    });
+    document.addEventListener('click', function(event) {
+        if (searchPanel.classList.contains('search-open') && !searchPanel.contains(event.target) && !searchButton.contains(event.target)) {
+            setSearchOpen(false);
+        }
     });
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && searchPanel.classList.contains('search-open')) {
-            searchPanel.classList.remove('search-open');
-            document.querySelector('.side-banner .btn-search').focus();
+            setSearchOpen(false);
+            searchButton.focus();
         }
     });
     document.getElementById('btn-clear').addEventListener('click', function() {

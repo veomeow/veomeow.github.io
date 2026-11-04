@@ -2,12 +2,8 @@
     <div class="side-banner">
         <h1 class="site-tab">
             <a href="{{ site.baseurl | append: '/' }}" class="site-name">
-                <img src="{{ '/assets/img/icon/house.webp' | prepend: site.baseurl }}" alt="">
                 <mark>{{ site.title }}</mark>
             </a>
-            <button class="btn-search" aria-label="검색창으로 이동" title="검색">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
-            </button>
             <button class="btn-theme" type="button" aria-label="다크 모드 켜기" aria-pressed="false" title="다크 모드 전환"><span aria-hidden="true">☾</span></button>
             <button id="btn-nav" aria-pressed="false" aria-label="메뉴 열기" title="메뉴">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
@@ -20,7 +16,6 @@
         <p class="site-description">{{ site.description }}</p>
     </div>
     <div class="side-info">
-        {% include search.html %}
         {% include navigation.html %}
         <div id="contact">
             <hr>
@@ -66,9 +61,10 @@
 </div>
 <div class="sidebar sidebar-right">
     <div class="tools">
-        <button class="btn-search" aria-label="검색창으로 이동" title="검색">
+        <button class="btn-search" type="button" aria-label="검색 열기" aria-expanded="false" aria-controls="search" title="검색">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
         </button>
+        {% include search.html %}
     </div>
     {%- if page_type == "post" -%}
     <div class="toc">

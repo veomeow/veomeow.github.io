@@ -82,10 +82,9 @@ document.addEventListener('DOMContentLoaded', function(){
         tagButton.addEventListener('click', function() {
             const contentID = tagButton.getAttribute('contentID');
             const inpuxBox = document.getElementById('search-input');
+            window.openSearchPanel();
             inpuxBox.value = contentID;
             inpuxBox.dispatchEvent(new Event('input'));
-            inpuxBox.scrollIntoView({ block: 'center', behavior: 'smooth' });
-            inpuxBox.focus({ preventScroll: true });
         });
     });
 
