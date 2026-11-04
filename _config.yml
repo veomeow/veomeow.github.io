@@ -1,19 +1,19 @@
-title: Muff1n
-description: "흥미 있는 거 다 해보기"
-url: "https://vemeow.github.io"
+title: 無meow
+description: "마녀 고양이의 개발·보안 기록실"
+url: "https://veomeow.github.io"
 baseurl: ""
 lang: ko-KR
 timezone: Asia/Seoul
-repository: vemeow/vemeow.github.io
+repository: veomeow/veomeow.github.io
 logo_img: "/assets/img/vemeow-avatar.jpg"
 profile_img: "/assets/img/vemeow-avatar.jpg"
 
 # Social Links
-github_username: vemeow
+github_username: veomeow
 github_profile_url: "https://github.com/veomeow"
 
 # External services are opt-in. Add the required identifiers only after configuring
-# the service for vemeow/vemeow.github.io.
+# the service for veomeow/veomeow.github.io.
 giscus_repo:
 giscus_repoId:
 giscus_category:

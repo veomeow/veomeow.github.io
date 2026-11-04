@@ -1,9 +1,22 @@
 var baseurl = document.querySelector('meta[name="baseurl"]').content;
 
 document.addEventListener('DOMContentLoaded', function(){
-    // The blog is light-only; discard settings saved by earlier versions.
-    localStorage.removeItem('theme');
-    document.body.classList.remove('dark-theme');
+    const themeButton = document.querySelector('.btn-theme');
+    function updateThemeButton() {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        themeButton.setAttribute('aria-pressed', String(dark));
+        themeButton.setAttribute('aria-label', dark ? '라이트 모드 켜기' : '다크 모드 켜기');
+        themeButton.setAttribute('title', dark ? '라이트 모드 전환' : '다크 모드 전환');
+        themeButton.querySelector('span').textContent = dark ? '☀' : '☾';
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#101E18' : '#FBFAF6';
+    }
+    updateThemeButton();
+    themeButton.addEventListener('click', function() {
+        const dark = document.documentElement.dataset.theme !== 'dark';
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (error) { /* Theme still works for this page. */ }
+        updateThemeButton();
+    });
 
     // navigation (mobile)
     var siteNav = document.querySelector('#navigation');
@@ -72,146 +85,72 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 
-    // search box
-    const searchButton = document.querySelectorAll(".btn-search");
-    const cancelButton = document.querySelector('#btn-clear');
-    const searchPage = document.querySelector("#search");
-
-    if (searchButton) {
-        searchButton.forEach((btn) => {
-            btn.addEventListener('click', function() {
-                searchPage.classList.add('active');
-                document.getElementById("search-input").focus();
-            });
+    const searchInput = document.getElementById('search-input');
+    const searchPanel = document.getElementById('search');
+    document.querySelectorAll('.btn-search').forEach(function(button) {
+        button.addEventListener('click', function() {
+            if (window.matchMedia('(max-width: 1024px)').matches) searchPanel.classList.toggle('search-open');
+            if (!searchPanel.classList.contains('search-open') && window.matchMedia('(max-width: 1024px)').matches) return;
+            searchInput.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            searchInput.focus({ preventScroll: true });
         });
-    }
-
-    if (searchPage) {
-        searchPage.addEventListener('click', function(event) {
-            const searchBar = document.querySelector(".search-box");
-            var target = event.target;
-
-            if (searchBar.contains(target))
-                return;
-
-            searchPage.classList.remove('active');
-        });
-    }
-
+    });
     document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && searchPage) {
-            searchPage.classList.remove('active');
+        if (event.key === 'Escape' && searchPanel.classList.contains('search-open')) {
+            searchPanel.classList.remove('search-open');
+            document.querySelector('.side-banner .btn-search').focus();
         }
     });
-
-    if (cancelButton) {
-        cancelButton.addEventListener('click', function() {
-            document.getElementById('btn-clear').style.display = 'none';
-            document.getElementById('search-input').value = "";
-
-            Array.from(document.querySelectorAll('.result-item')).forEach(function (item) {
-                item.remove();
-            });
-        });
-    }
+    document.getElementById('btn-clear').addEventListener('click', function() {
+        searchInput.value = '';
+        searchInput.dispatchEvent(new Event('input'));
+        searchInput.focus();
+    });
 });
 
 function searchPost(pages){
-    document.getElementById('search-input').addEventListener('keyup', function() {
-        var keyword = this.value.toLowerCase();
-        var matchedPosts = [];
-        const searchResults = document.getElementById('search-result');
-        const prevResults = document.querySelector(".result-item");
-    
-        if (keyword.length > 0) {
-            searchResults.style.display = 'block';
-            document.getElementById('btn-clear').style.display = 'block';
-        } else {
-            searchResults.style.display = 'none';
-            document.getElementById('btn-clear').style.display = 'none';
-        }
-        
-        Array.from(document.querySelectorAll('.result-item')).forEach(function (item) {
-            item.remove();
-        });
-    
-        for (var i = 0; i < pages.length; i++) {
-            var post = pages[i];
-    
-            if (post.title === 'Home' && post.type == 'category') continue;
-    
-            if (post.title.toLowerCase().indexOf(keyword) >= 0
-            || post.path.toLowerCase().indexOf(keyword) >= 0
-            || post.tags.toLowerCase().indexOf(keyword) >= 0){
-                matchedPosts.push(post);
-            }
-        }
-    
-        if (matchedPosts.length === 0) {
-            insertItem('<span class="description">There is no search result.</span>');
+    const input = document.getElementById('search-input');
+    const results = document.getElementById('search-result');
+    const clear = document.getElementById('btn-clear');
 
+    input.addEventListener('input', function() {
+        const keyword = input.value.trim().toLocaleLowerCase();
+        results.replaceChildren();
+        results.hidden = keyword.length === 0;
+        clear.hidden = keyword.length === 0;
+        if (!keyword) return;
+
+        const matches = pages.filter(function(page) {
+            if (page.title === 'Home' && page.type === 'category') return false;
+            return [page.title, page.path, page.tags].some(function(value) {
+                return String(value || '').toLocaleLowerCase().includes(keyword);
+            });
+        }).sort(function(a, b) {
+            return (a.type === 'category') - (b.type === 'category');
+        }).slice(0, 20);
+
+        if (!matches.length) {
+            const item = document.createElement('li');
+            item.className = 'search-empty';
+            item.textContent = '검색 결과가 없습니다.';
+            results.append(item);
             return;
-        } 
-    
-        matchedPosts.sort(function (a, b) {
-            if (a.type == 'category') return 1;
-    
-            return -1;
+        }
+
+        matches.forEach(function(page) {
+            const item = document.createElement('li');
+            item.className = 'result-item';
+            const link = document.createElement('a');
+            link.href = page.url;
+            const title = document.createElement('strong');
+            title.textContent = page.title;
+            const path = document.createElement('small');
+            path.textContent = page.path || 'Home';
+            link.append(title, path);
+            item.append(link);
+            results.append(item);
         });
-    
-        for (var i = 0; i < matchedPosts.length; i++) {
-            var highlighted_path = highlightKeyword(matchedPosts[i].path, keyword);
-    
-            if (highlighted_path === '')
-                highlighted_path = "Home";
-    
-            if (matchedPosts[i].type === 'post'){
-                var highlighted_title = highlightKeyword(matchedPosts[i].title, keyword);
-                var highlighted_tags = highlightKeyword(matchedPosts[i].tags, keyword);
-    
-                if (highlighted_tags === '')
-                    highlighted_tags = "none";
-
-                insertItem('<a href="' +
-                    matchedPosts[i].url +
-                    '"><table><thead><tr><th><svg class="ico-book"></svg></th><th>' + highlighted_title +  
-                    '</th></tr></thead><tbody><tr><td><svg class="ico-folder"></svg></td><td>' + highlighted_path +
-                    '</td></tr><tr><td><svg class="ico-tags"></svg></td><td>' + highlighted_tags +
-                    '</td></tr><tr><td><svg class="ico-calendar"></svg></td><td>' + matchedPosts[i].date +
-                    '</td></tr></tbody></table></a>'
-                );
-            }
-            else {
-                insertItem('<a href="' +
-                    matchedPosts[i].url +
-                    '"><table><thead><tr><th><svg class="ico-folder"></svg></th><th>' + highlighted_path + 
-                    '</th></tr></thead></table></a>'
-                );
-            }
-        }
-
-        function insertItem(inner_html){
-            let contents = document.createElement("li");
-            contents.classList.add("result-item");
-            contents.innerHTML = inner_html;
-            searchResults.append(contents);
-        }
     });
-
-    function highlightKeyword(txt, keyword) {
-        var index = txt.toLowerCase().lastIndexOf(keyword);
-    
-        if (index >= 0) { 
-            out = txt.substring(0, index) + 
-                "<span class='highlight'>" + 
-                txt.substring(index, index+keyword.length) + 
-                "</span>" + 
-                txt.substring(index + keyword.length);
-            return out;
-        }
-    
-        return txt;
-    }
 }
 
 function searchRelated(pages){

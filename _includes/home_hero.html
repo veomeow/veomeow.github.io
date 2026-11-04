@@ -1,0 +1,22 @@
+<section class="home-hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+        <p class="hero-kicker">無MEOW'S ARCHIVE <span aria-hidden="true">✦</span> LV. 01</p>
+        <h1 id="hero-title">마녀 고양이의<br><strong>기록실</strong></h1>
+        <p class="hero-intro">안녕하세요, 無meow입니다. 개발하고, 보안을 공부하며, 궁금한 것을 끝까지 따라간 기록을 모읍니다.</p>
+        <a class="hero-link" href="#category-list">기록 둘러보기 <span aria-hidden="true">↘</span></a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+        <span class="hero-spark hero-spark-one">✦</span>
+        <img src="{{ site.profile_img | prepend: site.baseurl }}" alt="" width="200" height="200">
+        <span class="hero-spark hero-spark-two">✧</span>
+        <span class="hero-caption">[ THE WITCH'S CAT ]</span>
+    </div>
+</section>
+<nav class="home-categories" aria-label="블로그 카테고리">
+    <a href="{{ '/development/' | prepend: site.baseurl }}">개발 <span>01</span></a>
+    <a href="{{ '/ctf-wargame/' | prepend: site.baseurl }}">CTF/Wargame <span>02</span></a>
+    <a href="{{ '/bug-bounty/' | prepend: site.baseurl }}">Bug Bounty <span>03</span></a>
+    <a href="{{ '/blog-tech-docs/' | prepend: site.baseurl }}">블로그/기술문서 <span>04</span></a>
+    <a href="{{ '/papers-conferences/' | prepend: site.baseurl }}">논문/컨퍼런스 <span>05</span></a>
+    <a href="{{ '/competitions-certifications/' | prepend: site.baseurl }}">공모전/자격증 <span>06</span></a>
+</nav>

@@ -36,13 +36,13 @@
         {% endif %}
 
         posts.push({
-            'title'    : "{{ page.title | escape }}",
-            'path'     : "{{ p_link }}",
-            'type'     : "{{ p_type }}",
-            'tags'     : "{{ page.tags | join: ', ' }}",
-            'url'      : "{{ page.url | prepend: site.baseurl }}",
-            'image'    : "{{ thumbnail_url }}",
-            'date'     : "{{ page.date | date: '%Y-%m-%d' }}"
+            'title'    : {{ page.title | jsonify }},
+            'path'     : {{ p_link | jsonify }},
+            'type'     : {{ p_type | jsonify }},
+            'tags'     : {{ page.tags | join: ', ' | jsonify }},
+            'url'      : {{ page.url | prepend: site.baseurl | jsonify }},
+            'image'    : {{ thumbnail_url | jsonify }},
+            'date'     : {{ page.date | date: '%Y-%m-%d' | jsonify }}
         });
     {% endfor %}
 

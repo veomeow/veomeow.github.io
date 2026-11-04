@@ -1,6 +1,8 @@
-# Muff1n
+# 無meow
 
-`https://vemeow.github.io`에 배포할 Jekyll 기술 블로그 소스입니다. Satellite 테마를 기반으로 밝은 우주 분위기, 6개 카테고리, 검색, TOC, 코드 복사를 구성했습니다.
+`https://veomeow.github.io`에 배포할 Jekyll 기술 블로그 소스입니다. Satellite 테마를 기반으로 마녀 고양이·픽셀 스타일, 6개 카테고리, 사이드바 검색, TOC, 코드 복사, 다크 모드를 구성했습니다.
+
+GitHub Pages는 GitHub 저장소의 정적 파일을 웹사이트로 공개하는 호스팅 기능입니다. 사용자 사이트는 `<사용자명>.github.io` 저장소에서 `https://<사용자명>.github.io` 주소로 게시됩니다. 이 저장소는 `main`에 push하면 GitHub Actions가 Jekyll을 빌드하고 Pages에 배포하도록 설정돼 있습니다. [GitHub Pages 공식 문서](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) · [사이트 생성 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 
 ## 로컬 실행
 
