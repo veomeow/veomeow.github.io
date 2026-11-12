@@ -1,4 +1,3 @@
-
 ---
 title: '[Knights Frontier 3기] "나"에 대해 기록하기'
 category: "블로그/기술문서/리서치"
