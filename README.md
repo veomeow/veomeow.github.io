@@ -28,7 +28,7 @@ bundle exec ruby scripts/jekyll-ruby4.rb serve
 | 개발 | `development` |
 | CTF/Wargame | `ctf-wargame` |
 | Bug Bounty | `bug-bounty` |
-| 블로그/기술문서 | `blog-tech-docs` |
+| 블로그/기술문서/리서치 | `blog-tech-docs` |
 | 논문/컨퍼런스 | `papers-conferences` |
 | 공모전/자격증 | `competitions-certifications` |
 
