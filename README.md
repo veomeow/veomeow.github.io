@@ -41,9 +41,10 @@ category: 개발
 date: "2026-10-31"
 tags:
   - example
-thumbnail: "/assets/img/thumbnail/example.webp"
 ---
 ```
+
+게시글 카드의 썸네일은 `_config.yml`의 `post_card_thumbnail`을 공통으로 사용합니다. 글마다 `thumbnail`을 지정할 필요가 없습니다. `thumbnail` front matter는 게시글 상세 페이지 상단 이미지에만 사용합니다.
 
 ## 배포
 

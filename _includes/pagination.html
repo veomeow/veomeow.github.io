@@ -15,16 +15,9 @@
             <li class="paginated-item">
                 <article class="article-content">
                     <div class="thumbnail-zone">
-                        {% if sub_page.thumbnail %}
-                            {%- assign thumbnail_url = sub_page.thumbnail -%}
-                            {%- assign check_localasset = thumbnail_url | split: '/' -%}
-                            {% if check_localasset[0] == '' %}
-                                {%- assign thumbnail_url = thumbnail_url | prepend: site.baseurl -%}
-                            {% endif %}
-                            <a href="{{ sub_page.url | prepend: site.baseurl }}" class="thumbnail_post" aria-label="{{ sub_page.title }} 썸네일" style="background-image:url('{{ thumbnail_url }}')"></a>
-                        {% else %}
-                            <a href="{{ sub_page.url | prepend: site.baseurl }}" class="thumbnail_post empty" aria-label="{{ sub_page.title }}" style="background-image:url('{{ '/assets/img/thumbnail/empty.jpg' | prepend: site.baseurl }}')"></a>
-                        {% endif %}
+                        <a href="{{ sub_page.url | prepend: site.baseurl }}" class="thumbnail_post" aria-label="{{ sub_page.title }} 썸네일">
+                            <img src="{{ site.post_card_thumbnail | prepend: site.baseurl }}" alt="" loading="lazy">
+                        </a>
                     </div>
                     <div class="box_contents">
                         <a href="{{ sub_page.url | prepend: site.baseurl }}"><h3 class="title_post">{{ sub_page.title }}</h3></a>

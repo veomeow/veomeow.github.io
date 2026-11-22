@@ -7,6 +7,7 @@ timezone: Asia/Seoul
 repository: veomeow/veomeow.github.io
 logo_img: "/assets/img/vemeow-avatar.jpg"
 profile_img: "/assets/img/vemeow-avatar.jpg"
+post_card_thumbnail: "/assets/img/thumbnail/nyang.png"
 
 # Social Links
 github_username: veomeow

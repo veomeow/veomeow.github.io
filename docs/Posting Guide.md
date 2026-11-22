@@ -83,9 +83,9 @@ I hope you like it!
 ```
 <br></br>
 
-### Setting a Post Thumbnail Image
+### Setting a Post Detail Image
 
-Add `thumbnail` attribute to the post that you'd like to show a representative image when rendered.
+Post cards all use the image configured by `post_card_thumbnail` in `_config.yml`. You do not need a `thumbnail` field in each post. Set `thumbnail` only when you want an image at the top of that post's detail page.
 
 ```yml
 ---

@@ -19,7 +19,7 @@
 
 .toc-board {
   max-width:#{$sidebarwd};
-  margin: 1rem 0 1rem 2rem !important;
+  margin: 1rem 0 1rem 1.75rem !important;
 }
 
 .toc-board, .toc-list {
@@ -36,6 +36,8 @@
     margin-top:6px;
     padding-left:16px;
   }
+
+  > .toc-list-item > .node-name--H2 { padding-left:0; }
 
   .toc-list-item {
     word-break:normal;
