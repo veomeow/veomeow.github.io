@@ -13,6 +13,9 @@
         {% include head.html %}
         <link rel="preload" href="{{ site.profile_img | prepend: site.baseurl }}" as="image">
         <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
+        {% if page.notion_import %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        {% endif %}
         {% if page_type == "post" %}
             {% if site.goatcounter_code %}
                 <script data-goatcounter="https://{{ site.goatcounter_code }}.goatcounter.com/count"
@@ -83,9 +86,11 @@
         <script src="{{ '/assets/js/subject.js' | prepend: site.baseurl }}"></script>
         {% else %}
         <script src="{{ '/assets/js/post.js' | prepend: site.baseurl }}"></script>
+        {% unless page.notion_import %}
         <link rel="preload" href="{{ '/assets/css/highlight.min.css' | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="{{ '/assets/css/highlight.min.css' | prepend: site.baseurl }}"></noscript>
         <script defer src="{{ '/assets/js/highlight.min.js' | prepend: site.baseurl }}"></script>
+        {% endunless %}
         {% endif %}
         <script src="{{ '/assets/js/common.js' | prepend: site.baseurl }}"></script>
         {% include search_event.html %}
