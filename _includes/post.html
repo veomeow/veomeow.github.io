@@ -23,7 +23,7 @@
                         {% if posting_date == "1900-01-01" %}
                             -
                         {% else %}
-                            {{ posting_date }}
+                            {{ page.source_published_at | default: posting_date }}
                         {% endif %}
                     </span>
                 </span>
