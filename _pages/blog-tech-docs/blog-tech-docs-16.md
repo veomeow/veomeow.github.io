@@ -81,7 +81,7 @@ Coverage-guided Fuzzing은 이러한 정보를 활용하여 새로운 코드 영
 퍼징과 퍼저에 대해 알아보다보니 생소한 단어가 많았습니다... 그래서 퍼징, 퍼저 관련 용어들을 표로 간략히 정리해봤습니다.
 
 | 용어 | 설명 |
-|---|---|
+| --- | --- |
 | Fuzz Harness | 퍼저가 생성한 입력값을 테스트 대상에 전달하고 실행하도록 작성한 코드 |
 | Mutator | 기존 입력값을 변형하여 새로운 테스트 케이스를 생성하는 구성 요소 |
 | Seed Scheduling | 여러 Seed 중 어떤 입력값을 우선적으로 변형할지 결정하는 과정 |
@@ -89,6 +89,7 @@ Coverage-guided Fuzzing은 이러한 정보를 활용하여 새로운 코드 영
 | Input Minimization | 특정 실행 경로나 오류를 유지하면서 개별 입력값의 크기를 줄이는 작업 |
 | Crash Deduplication | 동일한 원인으로 발생한 것으로 판단되는 Crash들을 분류하여 중복을 줄이는 작업 |
 | Reproducer | 발견한 오류를 다시 발생시키는 데 사용하는 입력 데이터 |
+{: style="width: 100%; table-layout: auto; word-break: keep-all;" }
 
 ---
 
@@ -200,12 +201,13 @@ syzkaller는 단순히 무작위 시스템 콜을 호출하는 것이 아니라,
 
 ### fuzzer 비교
 
-| Fuzzer    | 주요 대상       | 입력값 생성 방식                 | 커버리지 수집                  |
-| --------- | ----------- | ------------------------- | ------------------------ |
-| AFL++     | 프로그램 및 바이너리 | Mutation 중심               | LLVM, GCC, QEMU, Frida 등 |
-| Jackalope | 바이너리        | Mutation 중심, 문법 기반 변형도 지원 | TinyInst 등               |
-| libFuzzer | 함수 및 라이브러리  | Mutation 중심               | LLVM SanitizerCoverage   |
-| syzkaller | 운영체제 커널     | 시스템 콜 기반 생성·변형            | KCOV 등                   |
+| Fuzzer | 주요 대상 | 입력값 생성 방식 | 커버리지 수집 |
+| --- | --- | --- | --- |
+| AFL++ | 프로그램 및 바이너리 | Mutation 중심 | LLVM, GCC, QEMU, Frida 등 |
+| Jackalope | 바이너리 | Mutation 중심, 문법 기반 변형도 지원 | TinyInst 등 |
+| libFuzzer | 함수 및 라이브러리 | Mutation 중심 | LLVM SanitizerCoverage |
+| syzkaller | 운영체제 커널 | 시스템 콜 기반 생성·변형 | KCOV 등 |
+{: style="width: 100%; table-layout: auto; word-break: keep-all;" }
 
 네 가지 퍼저 모두 코드 커버리지를 활용하지만, 테스트 대상과 실행 방식에는 차이가 있습니다.
 
