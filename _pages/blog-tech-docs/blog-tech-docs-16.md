@@ -223,9 +223,7 @@ libFuzzer는 함수를 같은 프로세스에서 반복 호출하며, syzkaller�
 - **Out-of-process** : 퍼저와 타겟이 별도의 프로세스에서 실행되는 방식
 - **Persistent Mode** : 타겟 프로세스를 재사용하여 여러 입력값을 반복 처리하는 방식
 
-In-process는 실행 위치, Persistent Mode는 프로세스 재사용 여부에 대한 개념이었습니다!
-
-그러니까 둘은 서로 배타적인 개념이 아니었음….
+In-process는 실행 위치, Persistent Mode는 프로세스 재사용 여부에 대한 개념이었습니다! (서로 상반되는 개념 X)
 
 ---
 
