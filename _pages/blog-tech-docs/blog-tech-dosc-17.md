@@ -19,7 +19,7 @@ thumbnail: "/assets/img/thumbnail/nyang.png"
 - 선고일 : 2025년 3월 13일
 - 원심 판결 : 대전지방법원 2024. 12. 13. 선고 2023노2444 판결
 - 상고심 판결 : 파기환송
-- 상고심 판결문 링크 : https://www.law.go.kr/LSW/precInfoP.do?precSeq=606757
+- 상고심 판결문 링크 : [개인정보보호법위반 [대법원 2025. 3. 13. 선고 2025도266 판결]](https://www.law.go.kr/LSW/precInfoP.do?precSeq=606757)
 
 *파기환송 : 상급심에서 하급심의 판결을 파기하고 사건을 다시 심리하도록 하급심 법원으로 돌려보내는 것*
 
