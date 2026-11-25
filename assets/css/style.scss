@@ -65,3 +65,20 @@ input::-webkit-search-results-decoration{
 @import "muff1n";
 @import "and_lab";
 @import "notion_pwn";
+
+main > table,
+main .table-wrapper > table {
+  display: table;
+  width: 100% !important;
+  max-width: none;
+  table-layout: auto;
+}
+
+main > table th,
+main > table td,
+main .table-wrapper > table th,
+main .table-wrapper > table td {
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
