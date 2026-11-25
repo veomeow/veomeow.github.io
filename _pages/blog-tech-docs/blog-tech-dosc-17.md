@@ -217,7 +217,7 @@ thumbnail: "/assets/img/thumbnail/nyang.png"
 
 ## 참고 자료
 
-- https://www.law.go.kr/LSW/precInfoP.do?precSeq=606757
-- https://www.lawtimes.co.kr/news/articleView.html?idxno=206814
-- https://www.lec.co.kr/news/articleView.html?idxno=749707
-- https://www.lawissue.co.kr/view.php?ud=2025040112333154549a8c8bf58f_12
+- [개인정보보호법위반[대법원 2025. 3. 13. 선고 2025도266 판결]](https://www.law.go.kr/LSW/precInfoP.do?precSeq=606757)
+- [[판결] 법원 판결문 개인용으로 사용 "개인정보보호법 위반 아냐"](https://www.lawtimes.co.kr/news/articleView.html?idxno=206814)
+- [공동피고인 정보 담긴 판결문, 민사에 제출? 대법 “개인정보법 위반 아냐”](https://www.lec.co.kr/news/articleView.html?idxno=749707)
+- [대법원, 재판사무를 담당하는 법원(수소법원)은 ‘개인정보처리자’에서 제외](https://www.lawissue.co.kr/view.php?ud=2025040112333154549a8c8bf58f_12)
