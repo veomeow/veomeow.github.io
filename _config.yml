@@ -57,3 +57,5 @@ defaults:
 kramdown:
   input: GFM
   hard_wrap: true
+  typographic_symbols:
+    hellip: '...'
